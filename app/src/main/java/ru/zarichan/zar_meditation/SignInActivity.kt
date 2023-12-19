@@ -45,7 +45,7 @@ class SignInActivity : AppCompatActivity() {
             logCall.enqueue(object : Callback<Login> {
                 override fun onResponse(call: Call<Login>, response: Response<Login>) {
                     if (response.isSuccessful) {
-                        val i = Intent(this@SignInActivity, MainActivity::class.java)
+                        val i = Intent(this@SignInActivity, MenuActivity::class.java)
                         startActivity(i)
                     }
                 }
