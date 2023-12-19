@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Zar_Meditation" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/base</item>
+
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/primary_dark</item>
+        <item name="colorOnSecondary">@color/base</item>
+        <item name="chipSpacingVertical">@color/accent</item>
+
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/base</item>
+
+        <item name="android:statusBarColor">@color/primary</item>
+
+        <item name="android:textColor">@color/base</item>
+        <item name="android:textColorHint">@color/base_second</item>
+    </style>
+
+    <style name="Theme.Zar_Meditation" parent="Base.Theme.Zar_Meditation" />
+
+
+    <style name="Btn_Accent">
+        <item name="backgroundTint">@color/accent</item>
+    </style>
+
+    <style name="Text_Accent">
+        <item name="android:textColor">@color/accent</item>
+    </style>
+</resources>
