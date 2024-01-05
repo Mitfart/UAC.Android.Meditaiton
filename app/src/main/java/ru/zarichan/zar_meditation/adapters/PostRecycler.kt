@@ -9,9 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.zarichan.zar_meditation.R
-import ru.zarichan.zar_meditation.net.NetQuotes
+import ru.zarichan.zar_meditation.net.quotes
 
-class PostRecycler(private val context: Context, private val netQuotes: NetQuotes) :
+class PostRecycler(
+    private val context: Context,
+//    private val list: ArrayList<Post>
+    private val quotes: quotes
+) :
     RecyclerView.Adapter<PostRecycler.VH>() {
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleView: TextView = itemView.findViewById(R.id.post_title)
@@ -27,13 +31,13 @@ class PostRecycler(private val context: Context, private val netQuotes: NetQuote
 //        holder.titleView.text = list[position].title
 //        holder.subtitleView.text = list[position].description
 //        holder.imageView.setImageResource(list[position].image)
-        holder.titleView.text = netQuotes.data[position].title
-        holder.subtitleView.text = netQuotes.data[position].description
-        Glide.with(context).load(netQuotes.data[position].image).into(holder.imageView)
+        holder.titleView.text = quotes.data[position].title
+        holder.subtitleView.text = quotes.data[position].description
+        Glide.with(context).load(quotes.data[position].image).into(holder.imageView)
     }
 
     override fun getItemCount(): Int {
 //        return list.size
-        return netQuotes.data.size
+        return quotes.data.size
     }
 }

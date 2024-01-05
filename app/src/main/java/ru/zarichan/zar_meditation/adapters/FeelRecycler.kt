@@ -9,9 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.zarichan.zar_meditation.R
-import ru.zarichan.zar_meditation.net.NetFeels
+import ru.zarichan.zar_meditation.net.feelings
 
-class FeelRecycler(private val context: Context, private val netFeels: NetFeels) :
+class FeelRecycler(
+    private val context: Context,
+//                   private val list: ArrayList<Feel>
+    private val netFeels: feelings
+) :
     RecyclerView.Adapter<FeelRecycler.VH>() {
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.feel_img)

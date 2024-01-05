@@ -1,6 +1,6 @@
 package ru.zarichan.zar_meditation.net
 
-data class Login(
+data class login(
     val id: String,
     val email: String,
     val nickName: String,
@@ -9,11 +9,11 @@ data class Login(
 )
 
 
-data class NetFeels(val success: Boolean, val data: ArrayList<DataFeel>)
+data class feelings(val success: Boolean, val data: ArrayList<data_feelings>)
 
-data class DataFeel(val id: Int, val title: String, val image: String, val position: Int)
+data class data_feelings(val id: Int, val title: String, val image: String, val position: Int)
 
 
-data class NetQuotes(val success: Boolean, val data: ArrayList<DataQuote>)
+data class quotes(val success: Boolean, val data: ArrayList<data_quotes>)
 
-data class DataQuote(val id: Int, val title: String, val image: String, val description: String)
+data class data_quotes(val id: Int, val title: String, val image: String, val description: String)

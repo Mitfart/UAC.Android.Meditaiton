@@ -11,12 +11,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import ru.zarichan.zar_meditation.R
 import ru.zarichan.zar_meditation.adapters.FeelRecycler
-import ru.zarichan.zar_meditation.adapters.Feels
 import ru.zarichan.zar_meditation.adapters.PostRecycler
 import ru.zarichan.zar_meditation.net.Api
 import ru.zarichan.zar_meditation.net.MRetrofit
-import ru.zarichan.zar_meditation.net.NetFeels
-import ru.zarichan.zar_meditation.net.NetQuotes
+import ru.zarichan.zar_meditation.net.feelings
+import ru.zarichan.zar_meditation.net.quotes
 
 class HomeFragment : Fragment() {
     override fun onCreateView(
@@ -34,30 +33,22 @@ class HomeFragment : Fragment() {
 
         val netApi = MRetrofit().get().create(Api::class.java)
 
-        netApi.getFeels().enqueue(object : Callback<NetFeels> {
-            override fun onResponse(call: Call<NetFeels>, response: Response<NetFeels>) {
-                if (response.isSuccessful) {
-                    feelRecycler.adapter =
-                        response.body()?.let { FeelRecycler(requireContext(), it) }
-                }
+        netApi.getFeels().enqueue(object : Callback<feelings> {
+            override fun onResponse(call: Call<feelings>, response: Response<feelings>) {
+                if (response.isSuccessful) feelRecycler.adapter =
+                    response.body()?.let { FeelRecycler(requireContext(), it) }
             }
 
-            override fun onFailure(call: Call<NetFeels>, t: Throwable) {
-//                TODO("Not yet implemented")
-            }
+            override fun onFailure(call: Call<feelings>, t: Throwable) {}
         })
 
-        netApi.getQuotes().enqueue(object : Callback<NetQuotes> {
-            override fun onResponse(call: Call<NetQuotes>, response: Response<NetQuotes>) {
-                if (response.isSuccessful) {
-                    postRecycler.adapter =
-                        response.body()?.let { PostRecycler(requireContext(), it) }
-                }
+        netApi.getQuotes().enqueue(object : Callback<quotes> {
+            override fun onResponse(call: Call<quotes>, response: Response<quotes>) {
+                if (response.isSuccessful) postRecycler.adapter =
+                    response.body()?.let { PostRecycler(requireContext(), it) }
             }
 
-            override fun onFailure(call: Call<NetQuotes>, t: Throwable) {
-//                 TODO("Not yet implemented")
-            }
+            override fun onFailure(call: Call<quotes>, t: Throwable) {}
         })
 
         return root

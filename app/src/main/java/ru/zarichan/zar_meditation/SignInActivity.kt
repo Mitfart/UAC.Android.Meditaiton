@@ -1,18 +1,18 @@
 package ru.zarichan.zar_meditation
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import ru.zarichan.zar_meditation.net.Api
-import ru.zarichan.zar_meditation.net.Login
 import ru.zarichan.zar_meditation.net.MRetrofit
+import ru.zarichan.zar_meditation.net.login
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var emailInput: EditText
@@ -30,27 +30,35 @@ class SignInActivity : AppCompatActivity() {
 
     fun signin(view: View) {
         val email = emailInput.text.toString()
-        val password = emailInput.text.toString()
+        val password = passwordInput.text.toString()
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
+//            val i = Intent(this@SignInActivity, MenuActivity::class.java)
+//            startActivity(i)
+
             val log = MRetrofit().get()
             val getApi = log.create(Api::class.java)
-            var hashMap: HashMap<String, String> = HashMap()
+            val hashMap: HashMap<String, String> = HashMap()
 
-            hashMap.put("email", email)
-            hashMap.put("password", password)
+            hashMap["email"] = email
+            hashMap["password"] = password
 
-            val logCall: Call<Login> = getApi.getAuth(hashMap)
-
-            logCall.enqueue(object : Callback<Login> {
-                override fun onResponse(call: Call<Login>, response: Response<Login>) {
+            getApi.getAuth(hashMap).enqueue(object : Callback<login> {
+                override fun onResponse(call: Call<login>, response: Response<login>) {
                     if (response.isSuccessful) {
                         val i = Intent(this@SignInActivity, MenuActivity::class.java)
                         startActivity(i)
+                    } else {
+                        AlertDialog.Builder(this@SignInActivity)
+                            .setTitle("Ошибка")
+                            .setMessage("Ошибка логина или пароля")
+                            .setPositiveButton("Ok", null)
+                            .create()
+                            .show()
                     }
                 }
 
-                override fun onFailure(call: Call<Login>, t: Throwable) {
+                override fun onFailure(call: Call<login>, t: Throwable) {
                     Toast.makeText(this@SignInActivity, t.message, Toast.LENGTH_SHORT).show()
                 }
             })

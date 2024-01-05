@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="10dp"
     android:paddingBottom="10dp">
 
     <LinearLayout
@@ -29,7 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textColor="@color/text" />
+                android:textColor="@color/text"
+                android:textSize="34sp" />
 
             <TextView
                 android:id="@+id/post_subtitle"
@@ -42,10 +42,13 @@
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/text"
-                android:text="Подробнее" />
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="15dp"
+                android:text="Подробнее"
+                android:textSize="20sp" />
 
         </LinearLayout>
 

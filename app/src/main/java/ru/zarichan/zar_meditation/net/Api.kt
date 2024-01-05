@@ -6,12 +6,12 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface Api {
-    @POST("/user/login")
-    fun getAuth(@Body hashMap: HashMap<String, String>): Call<Login>
+    @POST("user/login")
+    fun getAuth(@Body hashMap: HashMap<String, String>): Call<login>
 
-    @GET("feels")
-    fun getFeels(): Call<NetFeels>
+    @GET("feelings")
+    fun getFeels(): Call<feelings>
 
-    @GET("feels")
-    fun getQuotes(): Call<NetQuotes>
+    @GET("quotes")
+    fun getQuotes(): Call<quotes>
 }

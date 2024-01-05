@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="TextView"
+                android:text="С возвращением!"
                 android:textAlignment="center" />
 
             <TextView
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="какой вы сегодня?"
                 android:textAlignment="center" />
 
             <androidx.recyclerview.widget.RecyclerView
